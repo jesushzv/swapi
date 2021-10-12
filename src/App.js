@@ -1,15 +1,13 @@
-//CHECK THIS OUT science BITCH!
 import { useState, useEffect } from "react";
 import "./App.css";
+import SpaceShips from "./SpaceShips";
 
 function App() {
   //2 manejo de estados
   const [apiData, setApiData] = useState([]);
-  const [inputState, setInputState] = useState("");
-  const [starship, setStarship] = useState("Death Star");
+  const [spaceship, setSpaceship] = useState("");
 
   // 1 Manejo de la api
-
   const apiUrl = `https://swapi.dev/api/starships/?page=`;
 
   //#3 Side effect: useEffect
@@ -27,51 +25,18 @@ function App() {
     }
   }, []);
 
-
-  //Passengers functional component with a button to actualize the number of passengers
-  let Passengers = (props) => {
-    var [pas, setPas] = useState(parseInt(props.num));
-
-    return (
-      <>
-        <p>Passengers: {pas}</p>
-        <button onClick={() => setPas((past) => past + 1)}> + </button>
-      </>
-    );
-  };
-
   return (
     <div className="App">
-      {console.log(apiData)}
+      <input
+        onChange={(event) => setSpaceship(event.target.value)}
+        id="searchBar"
+        type="text"
+        placeholder="Search for a spaceship"
+      />
 
-      <h2>List of starships:</h2>
+      <SpaceShips search={spaceship} data={apiData} />
 
-      <div>
-        {apiData.map((starship) => {
-          let url = starship.url;
-          let id = url.match(/[0-9]+/);
-          id = id.join("");
-          let imageUrl = `https://starwars-visualguide.com/assets/img/starships/${id}.jpg`;
 
-          return (
-            <div>
-              <h2> {starship.name} </h2>
-              <p> Model: {starship.model} </p>
-              <p> Manufacturer: {starship.manufacturer} </p>
-              <p> Starship Class: {starship.starship_class} </p>
-
-              <section className="etiquetas">
-                <p> MGLT: {starship.MGLT} </p>
-                <p> Model: {starship.cost_in_credits} </p>
-                <p> Speed: {starship.max_atmosphering_speed} </p>
-                <img width="100" height="100" src={imageUrl} alt="spaceShipImage" />
-
-                <Passengers num={starship.passengers} />
-              </section>
-            </div>
-          );
-        })}
-      </div>
     </div>
   );
 }
