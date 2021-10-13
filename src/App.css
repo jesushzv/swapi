@@ -1,7 +1,7 @@
-h2 {
-  color: red;
+.starFont{
+  font-family: 'Star Jedi', arial;
 }
 
-.hide{
-  display: none;
+.nave{
+  font-size: 10px;
 }

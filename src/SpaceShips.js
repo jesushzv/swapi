@@ -22,29 +22,34 @@ let SpaceShips = (props) => {
     img.src = imageUrl;
 
     return (
-      <div className="nave">
-        <h2> {starship.name} </h2>
-        <p> Model: {starship.model} </p>
-        <p> Manufacturer: {starship.manufacturer} </p>
-        <p> Starship Class: {starship.starship_class} </p>
+      <div className="nave container">
+        <h2 className="starFont"> {starship.name} </h2>
 
-        <section className="etiquetas">
-          <p> MGLT: {starship.MGLT} </p>
-          <p> Model: {starship.cost_in_credits} </p>
-          <p> Speed: {starship.max_atmosphering_speed} </p>
-
+        <div className="content row">
           {img.complete ? (
-            <img width="100" height="100" src={imageUrl} />
+            <img className="col-5 h-50 mh-50" src={imageUrl} />
           ) : (
             <img
-              width="100"
-              height="100"
+              className="col-5 h-50 mh-50"
               src="https://starwars-visualguide.com/assets/img/placeholder.jpg"
             />
           )}
-        </section>
 
-        <Passengers num={starship.passengers} />
+          <div className="info col">
+            <p className="starFont"> Model:</p>
+            <p>{starship.model} </p>
+            <p className="starFont"> Manufacturer: </p>{" "}
+            <p> {starship.manufacturer} </p>
+            <p className="starFont"> Starship Class: </p>{" "}
+            <p> {starship.starship_class} </p>
+            <section className="etiquetas">
+              <p> MGLT: {starship.MGLT} </p>
+              <p> Model: {starship.cost_in_credits} </p>
+              <p> Speed: {starship.max_atmosphering_speed} </p>
+            </section>
+            <Passengers num={starship.passengers} />
+          </div>
+        </div>
       </div>
     );
   });
