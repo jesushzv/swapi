@@ -5,10 +5,10 @@ import React, {useState} from "react";
     var [pas, setPas] = useState(parseInt(props.num));
 
     return (
-      <>
+      <div className="col" >
         <p>Passengers: {pas}</p>
         <button onClick={() => setPas((past) => past + 1)}> + </button>
-      </>
+      </div>
     );
   };
 

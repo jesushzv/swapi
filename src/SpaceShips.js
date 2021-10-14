@@ -25,17 +25,17 @@ let SpaceShips = (props) => {
       <div className="nave container">
         <h2 className="starFont"> {starship.name} </h2>
 
-        <div className="content row">
+        <div className="content row align-items-center">
           {img.complete ? (
-            <img className="col-5 h-50 mh-50" src={imageUrl} />
+            <img className="col-4 h-50 " src={imageUrl} />
           ) : (
             <img
-              className="col-5 h-50 mh-50"
+              className="col-4 h-50 "
               src="https://starwars-visualguide.com/assets/img/placeholder.jpg"
             />
           )}
 
-          <div className="info col">
+          <div className="info col-6 h-50">
             <p className="starFont"> Model:</p>
             <p>{starship.model} </p>
             <p className="starFont"> Manufacturer: </p>{" "}
@@ -47,8 +47,9 @@ let SpaceShips = (props) => {
               <p> Model: {starship.cost_in_credits} </p>
               <p> Speed: {starship.max_atmosphering_speed} </p>
             </section>
-            <Passengers num={starship.passengers} />
           </div>
+
+            <Passengers className="col" num={starship.passengers} />
         </div>
       </div>
     );
