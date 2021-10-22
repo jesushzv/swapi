@@ -23,7 +23,7 @@ let SpaceShips = (props) => {
 
     return (
       <div className="nave container">
-        <h2 className="starFont"> {starship.name} </h2>
+        <h2 className="starFont text-center"> {starship.name} </h2>
 
         <div className="content row align-items-center">
           {img.complete ? (
@@ -36,12 +36,25 @@ let SpaceShips = (props) => {
           )}
 
           <div className="info col-6 h-50">
-            <p className="starFont"> Model:</p>
-            <p>{starship.model} </p>
-            <p className="starFont"> Manufacturer: </p>{" "}
-            <p> {starship.manufacturer} </p>
-            <p className="starFont"> Starship Class: </p>{" "}
-            <p> {starship.starship_class} </p>
+            <div className="row">
+              <p>
+                <span className="starFont">Model: </span> {starship.model}
+              </p>
+            </div>
+            <div className="row">
+              <p>
+                <span className="starFont"> Manufacturer: </span>
+                {starship.manufacturer}{" "}
+              </p>
+            </div>
+
+            <div className="row">
+              <p>
+                <span className="starFont">Starship Class: </span>
+                {starship.starship_class}
+              </p>
+            </div>
+
             <section className="etiquetas">
               <p> MGLT: {starship.MGLT} </p>
               <p> Model: {starship.cost_in_credits} </p>
@@ -49,7 +62,7 @@ let SpaceShips = (props) => {
             </section>
           </div>
 
-            <Passengers className="col" num={starship.passengers} />
+          <Passengers className="col" num={starship.passengers} />
         </div>
       </div>
     );
